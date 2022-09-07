@@ -21,3 +21,13 @@ body {
     border-radius: 50%;
     background-color: white;
 }
+
+.player-one {
+    background-color: red;
+    border-radius: 50%;
+  }
+  
+  .player-two {
+    background-color: blue;
+    border-radius: 50%;
+  }
