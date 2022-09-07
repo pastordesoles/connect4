@@ -1,9 +1,11 @@
-const holes = document.getElementsByClassName('holes')
+const holes = document.getElementsByClassName('hole')
 let currentPlayer = 1
 
-holes.addEventListener("click", function (event) {
-        holes.classList.add("player-one");
+for (const hole of holes){
+hole.addEventListener('click', () => {
+hole.classList.add("player-one");
     });
+}
 
   
                 
