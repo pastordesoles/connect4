@@ -1,3 +1,4 @@
+//DOM Elements and items
 const holes = document.getElementsByClassName("hole");
 let currentPlayer = 1;
 const col1 = document.getElementsByClassName("col1");
@@ -7,13 +8,15 @@ const col4 = document.getElementsByClassName("col4");
 const col5 = document.getElementsByClassName("col5");
 const col6 = document.getElementsByClassName("col6");
 const col7 = document.getElementsByClassName("col7");
+let rows = 6;
+let columns = 7;
+
+//Fill the gaps from bottom sequence
 
 const fillFromBottom = (hole) => {
-  let currentColumn = hole.classList.value
-  debugger
+  let currentColumn = hole.classList.value;
 
   switch (currentColumn) {
-    
     case "hole col1":
       for (let i = col1.length - 1; i >= 0; i--) {
         if (!col1[i].classList.contains("taken")) {
@@ -88,8 +91,72 @@ const fillSlot = (hole) => {
     hole.classList.add("taken");
     currentPlayer = 1;
   }
+  checkVertical(holes);
 };
 
+//Winning conditions
+
+const checkVertical = (hole) => {
+  for (let i = 0; i < holes.length; i++) {
+    if (
+      holes[i].classList.contains("player-one") &&
+      holes[i + 7].classList.contains("player-one") &&
+      holes[i + 14].classList.contains("player-one") &&
+      holes[i + 21].classList.contains("player-one")
+    ) {
+      setWinner();
+      return;
+    } else if (
+      holes[i].classList.contains("player-two") &&
+      holes[i + 7].classList.contains("player-two") &&
+      holes[i + 14].classList.contains("player-two") &&
+      holes[i + 21].classList.contains("player-two")
+    ) {
+      setWinner();
+      return;
+    }
+  }
+};
+
+/*
+const checkVertical = (hole) => {
+  let currentColumn = hole.classList.value;
+  switch (currentColumn) {
+    case "hole col1 player-one taken":
+      for (let i = 0; i < col1.length - 1; i++) {
+        if (
+          col1[i].classList.contains("player-one") &&
+          col1[i + 1].classList.contains("player-one") &&
+          col1[i + 2].classList.contains("player-one") &&
+          col1[i + 3].classList.contains("player-one")
+        ) {
+          setWinner();
+          return;
+        }
+      }
+      break;
+
+    case "hole col1 player-two taken":
+      for (let i = 0; i < col1.length - 1; i++) {
+        if (
+          col1[i].classList.contains("player-two") &&
+          col1[i + 1].classList.contains("player-two") &&
+          col1[i + 2].classList.contains("player-two") &&
+          col1[i + 3].classList.contains("player-two")
+        ) {
+          setWinner();
+          return;
+        }
+      }
+      break;
+  }
+};
+*/
+const setWinner = () => {
+  alert("Winner");
+};
+
+//Event listeners
 for (let hole of holes) {
   hole.addEventListener("click", () => {
     fillFromBottom(hole);
