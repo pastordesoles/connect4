@@ -18,6 +18,9 @@ const row6 = document.getElementsByClassName("row6");
 
 let rows = 6;
 let columns = 7;
+let verticalWin = false;
+let horizontalWin = false;
+let diagonalWin = false;
 
 //Fill the gaps from bottom sequence
 
@@ -101,7 +104,9 @@ const fillSlot = (hole) => {
   }
 
   checkVertical(hole);
+
   checkHorizontal(hole);
+
   checkDiagonal();
 };
 
@@ -133,7 +138,7 @@ const checkVertical = () => {
 
 const checkHorizontal = (hole) => {
   let currentRow = hole.classList.value[13];
-debugger
+
   switch (currentRow) {
     case "1":
       let selected1 = 0;
@@ -143,21 +148,23 @@ debugger
         }
       }
       if (selected1 >= 4) {
-        for (let i = row1.length - 1; i >= 0; i--) {
+        for (let i = 0; i <= 3; i++) {
           if (
             row1[i].classList.contains("player-one") &&
-            row1[i - 1].classList.contains("player-one") &&
-            row1[i - 2].classList.contains("player-one") &&
-            row1[i - 3].classList.contains("player-one")
+            row1[i + 1].classList.contains("player-one") &&
+            row1[i + 2].classList.contains("player-one") &&
+            row1[i + 3].classList.contains("player-one")
           ) {
+            horizontalWin = true;
             setWinner();
             return;
           } else if (
             row1[i].classList.contains("player-two") &&
-            row1[i - 1].classList.contains("player-two") &&
-            row1[i - 2].classList.contains("player-two") &&
-            row1[i - 3].classList.contains("player-two")
+            row1[i + 1].classList.contains("player-two") &&
+            row1[i + 2].classList.contains("player-two") &&
+            row1[i + 3].classList.contains("player-two")
           ) {
+            horizontalWin = true;
             setWinner();
             return;
           }
@@ -173,21 +180,23 @@ debugger
       }
 
       if (selected2 >= 4) {
-        for (let i = row2.length - 1; i >= 0; i--) {
+        for (let i = 0; i <= 3; i++) {
           if (
             row2[i].classList.contains("player-one") &&
-            row2[i - 1].classList.contains("player-one") &&
-            row2[i - 2].classList.contains("player-one") &&
-            row2[i - 3].classList.contains("player-one")
+            row2[i + 1].classList.contains("player-one") &&
+            row2[i + 2].classList.contains("player-one") &&
+            row2[i + 3].classList.contains("player-one")
           ) {
+            horizontalWin = true;
             setWinner();
             return;
           } else if (
             row2[i].classList.contains("player-two") &&
-            row2[i - 1].classList.contains("player-two") &&
-            row2[i - 2].classList.contains("player-two") &&
-            row2[i - 3].classList.contains("player-two")
+            row2[i + 1].classList.contains("player-two") &&
+            row2[i + 2].classList.contains("player-two") &&
+            row2[i + 3].classList.contains("player-two")
           ) {
+            horizontalWin = true;
             setWinner();
             return;
           }
@@ -204,21 +213,23 @@ debugger
       }
 
       if (selected3 >= 4) {
-        for (let i = row3.length - 1; i >= 0; i--) {
+        for (let i = 0; i <= 3; i++) {
           if (
             row3[i].classList.contains("player-one") &&
-            row3[i - 1].classList.contains("player-one") &&
-            row3[i - 2].classList.contains("player-one") &&
-            row3[i - 3].classList.contains("player-one")
+            row3[i + 1].classList.contains("player-one") &&
+            row3[i + 2].classList.contains("player-one") &&
+            row3[i + 3].classList.contains("player-one")
           ) {
+            horizontalWin = true;
             setWinner();
             return;
           } else if (
             row3[i].classList.contains("player-two") &&
-            row3[i - 1].classList.contains("player-two") &&
-            row3[i - 2].classList.contains("player-two") &&
-            row3[i - 3].classList.contains("player-two")
+            row3[i + 1].classList.contains("player-two") &&
+            row3[i + 2].classList.contains("player-two") &&
+            row3[i + 3].classList.contains("player-two")
           ) {
+            horizontalWin = true;
             setWinner();
             return;
           }
@@ -234,21 +245,23 @@ debugger
         }
       }
       if (selected4 >= 4) {
-        for (let i = row4.length - 1; i >= 0; i--) {
+        for (let i = 0; i <= 3; i++) {
           if (
             row4[i].classList.contains("player-one") &&
-            row4[i - 1].classList.contains("player-one") &&
-            row4[i - 2].classList.contains("player-one") &&
-            row4[i - 3].classList.contains("player-one")
+            row4[i + 1].classList.contains("player-one") &&
+            row4[i + 2].classList.contains("player-one") &&
+            row4[i + 3].classList.contains("player-one")
           ) {
+            horizontalWin = true;
             setWinner();
             return;
           } else if (
             row4[i].classList.contains("player-two") &&
-            row4[i - 1].classList.contains("player-two") &&
-            row4[i - 2].classList.contains("player-two") &&
-            row4[i - 3].classList.contains("player-two")
+            row4[i + 1].classList.contains("player-two") &&
+            row4[i + 2].classList.contains("player-two") &&
+            row4[i + 3].classList.contains("player-two")
           ) {
+            horizontalWin = true;
             setWinner();
             return;
           }
@@ -265,21 +278,23 @@ debugger
       }
 
       if (selected5 >= 4) {
-        for (let i = row5.length - 1; i >= 0; i--) {
+        for (let i = 0; i <= 3; i++) {
           if (
             row5[i].classList.contains("player-one") &&
-            row5[i - 1].classList.contains("player-one") &&
-            row5[i - 2].classList.contains("player-one") &&
-            row5[i - 3].classList.contains("player-one")
+            row5[i + 1].classList.contains("player-one") &&
+            row5[i + 2].classList.contains("player-one") &&
+            row5[i + 3].classList.contains("player-one")
           ) {
+            horizontalWin = true;
             setWinner();
             return;
           } else if (
             row5[i].classList.contains("player-two") &&
-            row5[i - 1].classList.contains("player-two") &&
-            row5[i - 2].classList.contains("player-two") &&
-            row5[i - 3].classList.contains("player-two")
+            row5[i + 1].classList.contains("player-two") &&
+            row5[i + 2].classList.contains("player-two") &&
+            row5[i + 3].classList.contains("player-two")
           ) {
+            horizontalWin = true;
             setWinner();
             return;
           }
@@ -296,13 +311,14 @@ debugger
       }
 
       if (selected6 >= 4) {
-        for (let i = 0; i < row6.length - 1; i++) {
+        for (let i = 0; i <= 3; i++) {
           if (
             row6[i].classList.contains("player-one") &&
             row6[i + 1].classList.contains("player-one") &&
             row6[i + 2].classList.contains("player-one") &&
             row6[i + 3].classList.contains("player-one")
           ) {
+            horizontalWin = true;
             setWinner();
             return;
           } else if (
@@ -311,6 +327,7 @@ debugger
             row6[i + 2].classList.contains("player-two") &&
             row6[i + 3].classList.contains("player-two")
           ) {
+            horizontalWin = true;
             setWinner();
             return;
           }
@@ -321,9 +338,7 @@ debugger
   }
 };
 
-const checkDiagonal = () => {
-
-};
+const checkDiagonal = () => {};
 
 const checkVertical = (hole) => {
   let currentColumn = hole.classList.value[8];
@@ -337,21 +352,23 @@ const checkVertical = (hole) => {
         }
       }
       if (selected1 >= 4) {
-        for (let i = col1.length - 1; i >= 0; i--) {
+        for (let i = 0; i <= 2; i++) {
           if (
             col1[i].classList.contains("player-one") &&
-            col1[i - 1].classList.contains("player-one") &&
-            col1[i - 2].classList.contains("player-one") &&
-            col1[i - 3].classList.contains("player-one")
+            col1[i + 1].classList.contains("player-one") &&
+            col1[i + 2].classList.contains("player-one") &&
+            col1[i + 3].classList.contains("player-one")
           ) {
+            verticalWin = true;
             setWinner();
             return;
           } else if (
             col1[i].classList.contains("player-two") &&
-            col1[i - 1].classList.contains("player-two") &&
-            col1[i - 2].classList.contains("player-two") &&
-            col1[i - 3].classList.contains("player-two")
+            col1[i + 1].classList.contains("player-two") &&
+            col1[i + 2].classList.contains("player-two") &&
+            col1[i + 3].classList.contains("player-two")
           ) {
+            verticalWin = true;
             setWinner();
             return;
           }
@@ -360,28 +377,30 @@ const checkVertical = (hole) => {
       break;
     case "2":
       let selected2 = 0;
-      for (let i = 0; i < col2.length; i++) {
+      for (let i = 0; i < col2.length - 1; i++) {
         if (col2[i].classList.contains("taken")) {
           selected2++;
         }
       }
 
       if (selected2 >= 4) {
-        for (let i = col2.length - 1; i >= 0; i--) {
+        for (let i = 0; i <= 2; i++) {
           if (
             col2[i].classList.contains("player-one") &&
-            col2[i - 1].classList.contains("player-one") &&
-            col2[i - 2].classList.contains("player-one") &&
-            col2[i - 3].classList.contains("player-one")
+            col2[i + 1].classList.contains("player-one") &&
+            col2[i + 2].classList.contains("player-one") &&
+            col2[i + 3].classList.contains("player-one")
           ) {
+            verticalWin = true;
             setWinner();
             return;
           } else if (
             col2[i].classList.contains("player-two") &&
-            col2[i - 1].classList.contains("player-two") &&
-            col2[i - 2].classList.contains("player-two") &&
-            col2[i - 3].classList.contains("player-two")
+            col2[i + 1].classList.contains("player-two") &&
+            col2[i + 2].classList.contains("player-two") &&
+            col2[i + 3].classList.contains("player-two")
           ) {
+            verticalWin = true;
             setWinner();
             return;
           }
@@ -398,21 +417,23 @@ const checkVertical = (hole) => {
       }
 
       if (selected3 >= 4) {
-        for (let i = col3.length - 1; i >= 0; i--) {
+        for (let i = 0; i <= 2; i++) {
           if (
             col3[i].classList.contains("player-one") &&
-            col3[i - 1].classList.contains("player-one") &&
-            col3[i - 2].classList.contains("player-one") &&
-            col3[i - 3].classList.contains("player-one")
+            col3[i + 1].classList.contains("player-one") &&
+            col3[i + 2].classList.contains("player-one") &&
+            col3[i + 3].classList.contains("player-one")
           ) {
+            verticalWin = true;
             setWinner();
             return;
           } else if (
             col3[i].classList.contains("player-two") &&
-            col3[i - 1].classList.contains("player-two") &&
-            col3[i - 2].classList.contains("player-two") &&
-            col3[i - 3].classList.contains("player-two")
+            col3[i + 1].classList.contains("player-two") &&
+            col3[i + 2].classList.contains("player-two") &&
+            col3[i + 3].classList.contains("player-two")
           ) {
+            verticalWin = true;
             setWinner();
             return;
           }
@@ -428,21 +449,23 @@ const checkVertical = (hole) => {
         }
       }
       if (selected4 >= 4) {
-        for (let i = col4.length - 1; i >= 0; i--) {
+        for (let i = 0; i <= 2; i++) {
           if (
             col4[i].classList.contains("player-one") &&
-            col4[i - 1].classList.contains("player-one") &&
-            col4[i - 2].classList.contains("player-one") &&
-            col4[i - 3].classList.contains("player-one")
+            col4[i + 1].classList.contains("player-one") &&
+            col4[i + 2].classList.contains("player-one") &&
+            col4[i + 3].classList.contains("player-one")
           ) {
+            verticalWin = true;
             setWinner();
             return;
           } else if (
             col4[i].classList.contains("player-two") &&
-            col4[i - 1].classList.contains("player-two") &&
-            col4[i - 2].classList.contains("player-two") &&
-            col4[i - 3].classList.contains("player-two")
+            col4[i + 1].classList.contains("player-two") &&
+            col4[i + 2].classList.contains("player-two") &&
+            col4[i + 3].classList.contains("player-two")
           ) {
+            verticalWin = true;
             setWinner();
             return;
           }
@@ -459,21 +482,23 @@ const checkVertical = (hole) => {
       }
 
       if (selected5 >= 4) {
-        for (let i = col5.length - 1; i >= 0; i--) {
+        for (let i = 0; i <= 2; i++) {
           if (
             col5[i].classList.contains("player-one") &&
-            col5[i - 1].classList.contains("player-one") &&
-            col5[i - 2].classList.contains("player-one") &&
-            col5[i - 3].classList.contains("player-one")
+            col5[i + 1].classList.contains("player-one") &&
+            col5[i + 2].classList.contains("player-one") &&
+            col5[i + 3].classList.contains("player-one")
           ) {
+            verticalWin = true;
             setWinner();
             return;
           } else if (
             col5[i].classList.contains("player-two") &&
-            col5[i - 1].classList.contains("player-two") &&
-            col5[i - 2].classList.contains("player-two") &&
-            col5[i - 3].classList.contains("player-two")
+            col5[i + 1].classList.contains("player-two") &&
+            col5[i + 2].classList.contains("player-two") &&
+            col5[i + 3].classList.contains("player-two")
           ) {
+            verticalWin = true;
             setWinner();
             return;
           }
@@ -490,13 +515,14 @@ const checkVertical = (hole) => {
       }
 
       if (selected6 >= 4) {
-        for (let i = 0; i < col6.length - 1; i++) {
+        for (let i = 0; i <= 2; i++) {
           if (
             col6[i].classList.contains("player-one") &&
             col6[i + 1].classList.contains("player-one") &&
             col6[i + 2].classList.contains("player-one") &&
             col6[i + 3].classList.contains("player-one")
           ) {
+            verticalWin = true;
             setWinner();
             return;
           } else if (
@@ -505,6 +531,7 @@ const checkVertical = (hole) => {
             col6[i + 2].classList.contains("player-two") &&
             col6[i + 3].classList.contains("player-two")
           ) {
+            verticalWin = true;
             setWinner();
             return;
           }
@@ -522,13 +549,14 @@ const checkVertical = (hole) => {
       }
 
       if (selected7 >= 4) {
-        for (let i = 0; i < col7.length - 1; i++) {
+        for (let i = 0; i <= 2; i++) {
           if (
             col7[i].classList.contains("player-one") &&
             col7[i + 1].classList.contains("player-one") &&
             col7[i + 2].classList.contains("player-one") &&
             col7[i + 3].classList.contains("player-one")
           ) {
+            verticalWin = true;
             setWinner();
             return;
           } else if (
@@ -537,6 +565,7 @@ const checkVertical = (hole) => {
             col7[i + 2].classList.contains("player-two") &&
             col7[i + 3].classList.contains("player-two")
           ) {
+            verticalWin = true;
             setWinner();
             return;
           }
@@ -549,6 +578,18 @@ const checkVertical = (hole) => {
 
 const setWinner = () => {
   alert("Winner");
+  if (confirm("Reset") === true) {
+    resetBoard();
+  }
+};
+
+const resetBoard = () => {
+  horizontalWin = false;
+  verticalWin = false;
+  diagonalWin = false;
+  for (let hole of holes) {
+    hole.classList.remove("player-one", "player-two", "taken");
+  }
 };
 
 //Event listeners
