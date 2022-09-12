@@ -21,6 +21,16 @@ let columns = 7;
 let verticalWin = false;
 let horizontalWin = false;
 let diagonalWin = false;
+let fullHoles = 0;
+let board = [
+  Array.from(row1),
+  Array.from(row2),
+  Array.from(row3),
+  Array.from(row4),
+  Array.from(row5),
+  Array.from(row6),
+];
+console.log(board);
 
 //Fill the gaps from bottom sequence
 
@@ -93,21 +103,29 @@ const fillFromBottom = (hole) => {
 };
 
 const fillSlot = (hole) => {
+  let currentColumn = hole.classList.value[8] - 1;
+  let currentRow = hole.classList.value[13] - 1;
   if (currentPlayer === 1) {
     hole.classList.add("player-one");
     hole.classList.add("taken");
+    board[currentRow].splice(currentColumn, 1, 1);
     currentPlayer = 2;
+    fullHoles++;
   } else if (currentPlayer === 2) {
     hole.classList.add("player-two");
     hole.classList.add("taken");
+    board[currentRow].splice(currentColumn, 1, 2);
     currentPlayer = 1;
+    fullHoles++;
   }
 
-  checkVertical(hole);
-
-  checkHorizontal(hole);
-
-  checkDiagonal();
+  if (fullHoles === 42 && !verticalWin && !horizontalWin && !diagonalWin) {
+    checkDraw(hole);
+  } else {
+    //checkVertical(hole);
+    //checkHorizontal(hole);
+    checkDiagonal(board);
+  }
 };
 
 //Winning conditions
@@ -135,6 +153,13 @@ const checkVertical = () => {
   }
 };
 */
+
+const checkDraw = (hole) => {
+  alert("Draw");
+  for (let hole of holes) {
+    hole.classList.remove("player-one", "player-two", "taken");
+  }
+};
 
 const checkHorizontal = (hole) => {
   let currentRow = hole.classList.value[13];
@@ -338,7 +363,53 @@ const checkHorizontal = (hole) => {
   }
 };
 
-const checkDiagonal = () => {};
+const checkDiagonal = (board) => {
+  // Check down-right
+  for (let r = 0; r < 3; r++) {
+    for (c = 0; c < 4; c++) {
+      if (
+        board[r][c] === 1 &&
+        board[r + 1][c + 1] === 1 &&
+        board[r + 2][c + 2] === 1 &&
+        board[r + 3][c + 3] === 1
+      ) {
+        diagonalWin = true;
+        setWinner();
+      } else if (
+        board[r][c] === 2 &&
+        board[r + 1][c + 1] === 2 &&
+        board[r + 2][c + 2] === 2 &&
+        board[r + 3][c + 3] === 2
+      ) {
+        diagonalWin = true;
+        setWinner();
+      }
+    }
+  }
+
+  // Check down-left
+  for (r = 3; r < 6; r++) {
+    for (c = 0; c < 4; c++) {
+      if (
+        board[r][c] === 1 &&
+        board[r - 1][c + 1] === 1 &&
+        board[r - 2][c + 2] === 1 &&
+        board[r - 3][c + 3] === 1
+      ) {
+        diagonalWin = true;
+        setWinner();
+      } else if (
+        board[r][c] === 2 &&
+        board[r - 1][c + 1] === 2 &&
+        board[r - 2][c + 2] === 2 &&
+        board[r - 3][c + 3] === 2
+      ) {
+        diagonalWin = true;
+        setWinner();
+      }
+    }
+  }
+};
 
 const checkVertical = (hole) => {
   let currentColumn = hole.classList.value[8];
@@ -587,6 +658,12 @@ const resetBoard = () => {
   horizontalWin = false;
   verticalWin = false;
   diagonalWin = false;
+
+  for (let i = 0; i < board.length; i++) {
+    for (let x = 0; x < board[i].length; x++) {
+      board[i][x].splice(x,1,0)
+    }
+  }
   for (let hole of holes) {
     hole.classList.remove("player-one", "player-two", "taken");
   }
