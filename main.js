@@ -706,7 +706,6 @@ const resetBoard = () => {
   diagonalWin = false;
   fullHoles = 0;
   winner = ''
-  debugger;
   board = [];
   board = [
     Array.from(row1),
