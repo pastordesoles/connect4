@@ -16,6 +16,7 @@ const row4 = document.getElementsByClassName("row4");
 const row5 = document.getElementsByClassName("row5");
 const row6 = document.getElementsByClassName("row6");
 
+let winner;
 let rows = 6;
 let columns = 7;
 let verticalWin = false;
@@ -119,16 +120,20 @@ const fillSlot = (hole) => {
     fullHoles++;
   }
 
-  if (fullHoles === 42 && !verticalWin && !horizontalWin && !diagonalWin) {
-    checkDraw(hole);
-  } else {
-    //checkVertical(hole);
-    //checkHorizontal(hole);
-    checkDiagonal(board);
-  }
+  checkWins(hole);
 };
 
 //Winning conditions
+
+const checkWins = (hole) => {
+  if (fullHoles === 42 && !verticalWin && !horizontalWin && !diagonalWin) {
+    checkDraw(hole);
+  } else {
+    checkVertical(hole);
+    checkHorizontal(hole);
+    checkDiagonal(board);
+  }
+};
 
 /*
 const checkVertical = () => {
@@ -156,9 +161,9 @@ const checkVertical = () => {
 
 const checkDraw = (hole) => {
   alert("Draw");
-  debugger
-  fullHoles = 0
-  board = []
+
+  fullHoles = 0;
+  board = [];
   board = [
     Array.from(row1),
     Array.from(row2),
@@ -192,6 +197,7 @@ const checkHorizontal = (hole) => {
             row1[i + 3].classList.contains("player-one")
           ) {
             horizontalWin = true;
+            winner = "Player 1"
             setWinner();
             return;
           } else if (
@@ -201,6 +207,7 @@ const checkHorizontal = (hole) => {
             row1[i + 3].classList.contains("player-two")
           ) {
             horizontalWin = true;
+            winner = "Player 2"
             setWinner();
             return;
           }
@@ -224,6 +231,7 @@ const checkHorizontal = (hole) => {
             row2[i + 3].classList.contains("player-one")
           ) {
             horizontalWin = true;
+            winner = "Player 1"
             setWinner();
             return;
           } else if (
@@ -233,6 +241,7 @@ const checkHorizontal = (hole) => {
             row2[i + 3].classList.contains("player-two")
           ) {
             horizontalWin = true;
+            winner = "Player 2"
             setWinner();
             return;
           }
@@ -257,6 +266,7 @@ const checkHorizontal = (hole) => {
             row3[i + 3].classList.contains("player-one")
           ) {
             horizontalWin = true;
+            winner = "Player 1"
             setWinner();
             return;
           } else if (
@@ -266,6 +276,7 @@ const checkHorizontal = (hole) => {
             row3[i + 3].classList.contains("player-two")
           ) {
             horizontalWin = true;
+            winner = "Player 2"
             setWinner();
             return;
           }
@@ -289,6 +300,7 @@ const checkHorizontal = (hole) => {
             row4[i + 3].classList.contains("player-one")
           ) {
             horizontalWin = true;
+            winner = "Player 1"
             setWinner();
             return;
           } else if (
@@ -298,6 +310,7 @@ const checkHorizontal = (hole) => {
             row4[i + 3].classList.contains("player-two")
           ) {
             horizontalWin = true;
+            winner = "Player 2"
             setWinner();
             return;
           }
@@ -322,6 +335,7 @@ const checkHorizontal = (hole) => {
             row5[i + 3].classList.contains("player-one")
           ) {
             horizontalWin = true;
+            winner = "Player 1"
             setWinner();
             return;
           } else if (
@@ -331,6 +345,7 @@ const checkHorizontal = (hole) => {
             row5[i + 3].classList.contains("player-two")
           ) {
             horizontalWin = true;
+            winner = "Player 2"
             setWinner();
             return;
           }
@@ -355,6 +370,7 @@ const checkHorizontal = (hole) => {
             row6[i + 3].classList.contains("player-one")
           ) {
             horizontalWin = true;
+            winner = "Player 1"
             setWinner();
             return;
           } else if (
@@ -364,6 +380,7 @@ const checkHorizontal = (hole) => {
             row6[i + 3].classList.contains("player-two")
           ) {
             horizontalWin = true;
+            winner = "Player 2"
             setWinner();
             return;
           }
@@ -385,6 +402,7 @@ const checkDiagonal = (board) => {
         board[r + 3][c + 3] === 1
       ) {
         diagonalWin = true;
+        winner = "Player 1"
         setWinner();
       } else if (
         board[r][c] === 2 &&
@@ -393,6 +411,7 @@ const checkDiagonal = (board) => {
         board[r + 3][c + 3] === 2
       ) {
         diagonalWin = true;
+        winner = "Player 2"
         setWinner();
       }
     }
@@ -408,6 +427,7 @@ const checkDiagonal = (board) => {
         board[r - 3][c + 3] === 1
       ) {
         diagonalWin = true;
+        winner = "Player 1"
         setWinner();
       } else if (
         board[r][c] === 2 &&
@@ -416,6 +436,7 @@ const checkDiagonal = (board) => {
         board[r - 3][c + 3] === 2
       ) {
         diagonalWin = true;
+        winner = "Player 2"
         setWinner();
       }
     }
@@ -442,6 +463,7 @@ const checkVertical = (hole) => {
             col1[i + 3].classList.contains("player-one")
           ) {
             verticalWin = true;
+            winner = "Player 1"
             setWinner();
             return;
           } else if (
@@ -451,6 +473,7 @@ const checkVertical = (hole) => {
             col1[i + 3].classList.contains("player-two")
           ) {
             verticalWin = true;
+            winner = "Player 2"
             setWinner();
             return;
           }
@@ -473,6 +496,7 @@ const checkVertical = (hole) => {
             col2[i + 2].classList.contains("player-one") &&
             col2[i + 3].classList.contains("player-one")
           ) {
+            winner = "Player 1"
             verticalWin = true;
             setWinner();
             return;
@@ -483,6 +507,7 @@ const checkVertical = (hole) => {
             col2[i + 3].classList.contains("player-two")
           ) {
             verticalWin = true;
+            winner = "Player 2"
             setWinner();
             return;
           }
@@ -507,6 +532,7 @@ const checkVertical = (hole) => {
             col3[i + 3].classList.contains("player-one")
           ) {
             verticalWin = true;
+            winner = "Player 1"
             setWinner();
             return;
           } else if (
@@ -516,6 +542,7 @@ const checkVertical = (hole) => {
             col3[i + 3].classList.contains("player-two")
           ) {
             verticalWin = true;
+            winner = "Player 2"
             setWinner();
             return;
           }
@@ -539,6 +566,7 @@ const checkVertical = (hole) => {
             col4[i + 3].classList.contains("player-one")
           ) {
             verticalWin = true;
+            winner = "Player 1"
             setWinner();
             return;
           } else if (
@@ -548,6 +576,7 @@ const checkVertical = (hole) => {
             col4[i + 3].classList.contains("player-two")
           ) {
             verticalWin = true;
+            winner = "Player 2"
             setWinner();
             return;
           }
@@ -572,6 +601,7 @@ const checkVertical = (hole) => {
             col5[i + 3].classList.contains("player-one")
           ) {
             verticalWin = true;
+            winner = "Player 1"
             setWinner();
             return;
           } else if (
@@ -581,6 +611,7 @@ const checkVertical = (hole) => {
             col5[i + 3].classList.contains("player-two")
           ) {
             verticalWin = true;
+            winner = "Player 2"
             setWinner();
             return;
           }
@@ -605,6 +636,7 @@ const checkVertical = (hole) => {
             col6[i + 3].classList.contains("player-one")
           ) {
             verticalWin = true;
+            winner = "Player 1"
             setWinner();
             return;
           } else if (
@@ -614,6 +646,7 @@ const checkVertical = (hole) => {
             col6[i + 3].classList.contains("player-two")
           ) {
             verticalWin = true;
+            winner = "Player 2"
             setWinner();
             return;
           }
@@ -639,6 +672,7 @@ const checkVertical = (hole) => {
             col7[i + 3].classList.contains("player-one")
           ) {
             verticalWin = true;
+            winner = "Player 1"
             setWinner();
             return;
           } else if (
@@ -648,6 +682,7 @@ const checkVertical = (hole) => {
             col7[i + 3].classList.contains("player-two")
           ) {
             verticalWin = true;
+            winner = "Player 2"
             setWinner();
             return;
           }
@@ -659,7 +694,7 @@ const checkVertical = (hole) => {
 };
 
 const setWinner = () => {
-  alert("Winner");
+  alert("Winner " + winner);
   if (confirm("Reset") === true) {
     resetBoard();
   }
@@ -669,9 +704,10 @@ const resetBoard = () => {
   horizontalWin = false;
   verticalWin = false;
   diagonalWin = false;
-  fullHoles = 0
-debugger
-  board = []
+  fullHoles = 0;
+  winner = ''
+  debugger;
+  board = [];
   board = [
     Array.from(row1),
     Array.from(row2),
