@@ -156,6 +156,17 @@ const checkVertical = () => {
 
 const checkDraw = (hole) => {
   alert("Draw");
+  debugger
+  fullHoles = 0
+  board = []
+  board = [
+    Array.from(row1),
+    Array.from(row2),
+    Array.from(row3),
+    Array.from(row4),
+    Array.from(row5),
+    Array.from(row6),
+  ];
   for (let hole of holes) {
     hole.classList.remove("player-one", "player-two", "taken");
   }
@@ -658,12 +669,17 @@ const resetBoard = () => {
   horizontalWin = false;
   verticalWin = false;
   diagonalWin = false;
-
-  for (let i = 0; i < board.length; i++) {
-    for (let x = 0; x < board[i].length; x++) {
-      board[i][x].splice(x,1,0)
-    }
-  }
+  fullHoles = 0
+debugger
+  board = []
+  board = [
+    Array.from(row1),
+    Array.from(row2),
+    Array.from(row3),
+    Array.from(row4),
+    Array.from(row5),
+    Array.from(row6),
+  ];
   for (let hole of holes) {
     hole.classList.remove("player-one", "player-two", "taken");
   }
