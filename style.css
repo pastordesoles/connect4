@@ -77,7 +77,7 @@ header {
   gap: 1rem;
 }
 
-.restart .next-player {
+.restart .next-player .quit {
   display: flex;
   justify-content: center;
   align-items: center;

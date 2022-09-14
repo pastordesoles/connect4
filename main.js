@@ -740,6 +740,10 @@ const resetBoard = () => {
   nextColor.classList.add("player-one");
 };
 
+const gameAgain = () => {
+  location.reload();
+};
+
 //Event listeners
 for (let hole of holes) {
   hole.addEventListener("click", () => {

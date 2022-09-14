@@ -70,15 +70,20 @@
         <div class="controls-container">
           <div class="controls">
             <div class="restart">
-              <button id="restart-button" onclick="resetBoard();">Reset Game</button>
+              <button id="restart-button" onclick="resetBoard();">
+                Reset Game
+              </button>
             </div>
 
             <div class="next-player">
-              <div
-                id="next-player-color"
-                class="hole player-one"
-              ></div>
+              <div id="next-player-color" class="hole player-one"></div>
               <div id="next-player-name">Player One</div>
+            </div>
+
+            <div class="quit">
+              <button class="quit" id="quit" onclick="gameAgain();">
+                Quit
+              </button>
             </div>
           </div>
         </div>
