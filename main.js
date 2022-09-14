@@ -16,7 +16,7 @@ const row4 = document.getElementsByClassName("row4");
 const row5 = document.getElementsByClassName("row5");
 const row6 = document.getElementsByClassName("row6");
 
-let currentPlayerName = document.getElementById("next-player-name");
+let nextPlayerName = document.getElementById("next-player-name");
 let nextColor = document.getElementById("next-player-color");
 
 let winner;
@@ -110,7 +110,7 @@ const fillSlot = (hole) => {
   let currentColumn = hole.classList.value[8] - 1;
   let currentRow = hole.classList.value[13] - 1;
   if (currentPlayer === 1) {
-    currentPlayerName.innerHTML = "Player Two";
+    nextPlayerName.innerHTML = "Player Two";
     changeNextColor();
     hole.classList.add("player-one");
     hole.classList.add("taken");
@@ -118,7 +118,7 @@ const fillSlot = (hole) => {
     currentPlayer = 2;
     fullHoles++;
   } else if (currentPlayer === 2) {
-    currentPlayerName.innerHTML = "Player One";
+    nextPlayerName.innerHTML = "Player One";
     changeNextColor();
     hole.classList.add("player-two");
     hole.classList.add("taken");
@@ -732,7 +732,7 @@ const resetBoard = () => {
     Array.from(row5),
     Array.from(row6),
   ];
-  currentPlayerName.innerHTML = "Player One";
+  nextPlayerName.innerHTML = "Player One";
   currentPlayer = 1;
   for (let hole of holes) {
     hole.classList.remove("player-one", "player-two", "taken");
