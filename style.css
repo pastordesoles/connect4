@@ -11,11 +11,29 @@ main {
   flex-direction: row;
 }
 
+
 header {
   position: relative;
   width: 100%;
   z-index: 30;
 }
+
+section {
+  display: flex;
+  flex-flow: row wrap;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 1rem;
+  width: 60%;
+  height: 42%;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  border: 0.3rem solid rgb(255, 123, 0);
+  font-size: 0.8rem;
+}
+
 
 .nav {
   display: flex;
@@ -118,4 +136,56 @@ header {
   text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
     0px 0px 20px #b393d3;
   padding-top: 1ch;
+}
+
+.toggle {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.toggle-switch {
+  display: inline-block;
+  background: #ccc;
+  border-radius: 16px;
+  width: 58px;
+  height: 32px;
+  position: relative;
+  vertical-align: middle;
+  transition: background 0.25s;
+}
+.toggle-switch:before, .toggle-switch:after {
+  content: "";
+}
+.toggle-switch:before {
+  display: block;
+  background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  transition: left 0.25s;
+}
+.toggle:hover .toggle-switch:before {
+  background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+.toggle-checkbox:checked + .toggle-switch {
+  background: #56c080;
+}
+.toggle-checkbox:checked + .toggle-switch:before {
+  left: 30px;
+}
+
+.toggle-checkbox {
+  position: absolute;
+  visibility: hidden;
+}
+
+.toggle-label {
+  margin-left: 5px;
+  position: relative;
+  top: 2px;
 }

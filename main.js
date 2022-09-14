@@ -19,6 +19,7 @@ const row6 = document.getElementsByClassName("row6");
 let nextPlayerName = document.getElementById("next-player-name");
 let nextColor = document.getElementById("next-player-color");
 
+let cpu = false;
 let winner;
 let rows = 6;
 let columns = 7;
@@ -35,6 +36,14 @@ let board = [
   Array.from(row6),
 ];
 console.log(board);
+
+var modal = document.getElementById("mensaje");
+
+let closeModal = document.getElementById("play-button");
+
+closeModal.onclick = function () {
+  modal.style.display = "none";
+};
 
 //Fill the gaps from bottom sequence
 
@@ -106,8 +115,89 @@ const fillFromBottom = (hole) => {
   }
 };
 
+const fillFromBottomCpu = (hole) => {
+  let currentColumn = hole.classList.value[8];
+
+  switch (currentColumn) {
+    case "1":
+      for (let i = col1.length - 1; i >= 0; i--) {
+        if (!col1[i].classList.contains("taken")) {
+          fillSlotCpu(col1[i]);
+          return;
+        }
+      }
+      break;
+    case "2":
+      for (let i = col2.length - 1; i >= 0; i--) {
+        if (!col2[i].classList.contains("taken")) {
+          fillSlotCpu(col2[i]);
+          return;
+        }
+      }
+      break;
+
+    case "3":
+      for (let i = col3.length - 1; i >= 0; i--) {
+        if (!col3[i].classList.contains("taken")) {
+          fillSlotCpu(col3[i]);
+          return;
+        }
+      }
+      break;
+
+    case "4":
+      for (let i = col4.length - 1; i >= 0; i--) {
+        if (!col4[i].classList.contains("taken")) {
+          fillSlotCpu(col4[i]);
+          return;
+        }
+      }
+      break;
+
+    case "5":
+      for (let i = col5.length - 1; i >= 0; i--) {
+        if (!col5[i].classList.contains("taken")) {
+          fillSlotCpu(col5[i]);
+          return;
+        }
+      }
+      break;
+
+    case "6":
+      for (let i = col6.length - 1; i >= 0; i--) {
+        if (!col6[i].classList.contains("taken")) {
+          fillSlotCpu(col6[i]);
+          return;
+        }
+      }
+      break;
+
+    case "7":
+      for (let i = col7.length - 1; i >= 0; i--) {
+        if (!col7[i].classList.contains("taken")) {
+          fillSlotCpu(col7[i]);
+          return;
+        }
+      }
+      break;
+  }
+};
+
+const randomHole = () => {
+  debugger;
+  const hole = holes[Math.floor(Math.random() * holes.length)];
+  if (
+    hole.classList.contains("player-one") ||
+    hole.classList.contains("player-two")
+  ) {
+    return randomHole();
+  }
+  return hole;
+};
+
 const fillSlot = (hole) => {
   let currentColumn = hole.classList.value[8] - 1;
+  debugger;
   let currentRow = hole.classList.value[13] - 1;
   if (currentPlayer === 1) {
     nextPlayerName.innerHTML = "Player Two";
@@ -117,7 +207,29 @@ const fillSlot = (hole) => {
     board[currentRow].splice(currentColumn, 1, 1);
     currentPlayer = 2;
     fullHoles++;
-  } else if (currentPlayer === 2) {
+    if (cpu && currentPlayer === 2) {
+      let randomHoleCpu = randomHole();
+      setTimeout(() => {
+        fillFromBottomCpu(randomHoleCpu);
+      }, 1500);
+    }
+  } else if (currentPlayer === 2 && !cpu) {
+    nextPlayerName.innerHTML = "Player One";
+    changeNextColor();
+    hole.classList.add("player-two");
+    hole.classList.add("taken");
+    board[currentRow].splice(currentColumn, 1, 2);
+    currentPlayer = 1;
+    fullHoles++;
+  }
+
+  checkWins(hole);
+};
+
+const fillSlotCpu = (hole) => {
+  let currentColumn = hole.classList.value[8] - 1;
+  let currentRow = hole.classList.value[13] - 1;
+  if (cpu && currentPlayer === 2) {
     nextPlayerName.innerHTML = "Player One";
     changeNextColor();
     hole.classList.add("player-two");
@@ -741,6 +853,7 @@ const resetBoard = () => {
 };
 
 const gameAgain = () => {
+  debugger;
   location.reload();
 };
 
@@ -750,3 +863,13 @@ for (let hole of holes) {
     fillFromBottom(hole);
   });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  let checkbox = document.querySelector('input[type="checkbox"]');
+
+  checkbox.addEventListener("change", function () {
+    if (checkbox.checked) {
+      cpu = true;
+    }
+  });
+});
