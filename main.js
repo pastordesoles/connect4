@@ -37,7 +37,7 @@ let board = [
 ];
 console.log(board);
 
-var modal = document.getElementById("mensaje");
+let modal = document.getElementById("mensaje");
 
 let closeModal = document.getElementById("play-button");
 
@@ -853,7 +853,6 @@ const resetBoard = () => {
 };
 
 const gameAgain = () => {
-  debugger;
   location.reload();
 };
 
