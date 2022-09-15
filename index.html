@@ -25,23 +25,37 @@
 
     <section id="message">
       <div class="message button">
-        <h2>Welcome to the Connect 4</h2>
-        <p>The default game mode is P1vsP2. If you want to play against a CPU, select your game mode and click on START<br>
+        <h2 class="text">Welcome to the Connect 4</h2>
+        <p class="text">The default game mode is P1vsP2. If you want to play against a CPU, select your game mode and click on START.<br>
          <span>😜</span>
         </p>
         <label class="toggle">
           <input class="toggle-checkbox" type="checkbox">
           <div class="toggle-switch"></div>
-          <span class="toggle-label">P1vsCPU</span>
+          <span class="toggle-label text">P1vsCPU</span>
         </label>
-        <button class="play-button button" id="play-button"">START</button>
+        <button class="play-button button text" id="play-button"">START</button>
       </div>
 
 </section>
     <main>
       <div class="game-container">
+
+        <div id="winner" class="button">
+          <p id="winnerMessage" class="text"> 
+          <span>😜</span>
+           </p>
+        <button id="restart-button" class="button text" onclick="resetBoard();">
+        Reset Game
+        </button>
+        <button class="quit button text" id="quit" onclick="gameAgain();">
+        Quit
+        </button>
+
+</div>
+
         <div class="game">
-          <div class="game-grid">
+          <div class="game-grid button" id="game-grid">
             <div class="hole col1 row1"></div>
             <div class="hole col2 row1"></div>
             <div class="hole col3 row1"></div>
@@ -92,21 +106,21 @@
           </div>
         </div>
 
-        <div class="controls-container">
+        <div class="controls-container" id="controls-container">
           <div class="controls">
             <div class="restart">
-              <button id="restart-button" class="button" onclick="resetBoard();">
+              <button id="restart-button" class="button text" onclick="resetBoard();">
                 Reset Game
               </button>
             </div>
 
-            <div class="next-player">
+            <div class="next-player button">
               <div id="next-player-color" class="hole player-one"></div>
-              <div id="next-player-name">Player One</div>
+              <div id="next-player-name" class="text">Player One</div>
             </div>
 
             <div class="quit">
-              <button class="quit button" id="quit" onclick="gameAgain();">
+              <button class="quit button text" id="quit" onclick="gameAgain();">
                 Quit
               </button>
             </div>
