@@ -18,6 +18,8 @@ const row6 = document.getElementsByClassName("row6");
 
 let nextPlayerName = document.getElementById("next-player-name");
 let nextColor = document.getElementById("next-player-color");
+let startScreen = document.getElementById("message");
+let closeStartScreen = document.getElementById("play-button");
 
 let cpu = false;
 let winner;
@@ -37,13 +39,6 @@ let board = [
 ];
 console.log(board);
 
-let modal = document.getElementById("mensaje");
-
-let closeModal = document.getElementById("play-button");
-
-closeModal.onclick = function () {
-  modal.style.display = "none";
-};
 
 //Fill the gaps from bottom sequence
 
@@ -197,7 +192,6 @@ const randomHole = () => {
 
 const fillSlot = (hole) => {
   let currentColumn = hole.classList.value[8] - 1;
-  debugger;
   let currentRow = hole.classList.value[13] - 1;
   if (currentPlayer === 1) {
     nextPlayerName.innerHTML = "Player Two";
@@ -211,7 +205,7 @@ const fillSlot = (hole) => {
       let randomHoleCpu = randomHole();
       setTimeout(() => {
         fillFromBottomCpu(randomHoleCpu);
-      }, 1500);
+      }, 1000);
     }
   } else if (currentPlayer === 2 && !cpu) {
     nextPlayerName.innerHTML = "Player One";
@@ -829,6 +823,8 @@ const setWinner = () => {
   }
 };
 
+
+//Resets
 const resetBoard = () => {
   horizontalWin = false;
   verticalWin = false;
@@ -872,3 +868,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+closeStartScreen.onclick = function () {
+  startScreen.style.display = "none";
+};
+

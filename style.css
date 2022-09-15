@@ -2,7 +2,7 @@ body {
   height: auto;
   width: auto;
   overflow: hidden;
-  background: #e0eee0;
+  background: #111;
 }
 
 main {
@@ -11,17 +11,15 @@ main {
   flex-direction: row;
 }
 
-
 header {
   position: relative;
   width: 100%;
   z-index: 30;
+  display: flex;
 }
 
-section {
-  display: flex;
-  flex-flow: row wrap;
-  background-color: #fefefe;
+.message {
+  background-color: #111;
   margin: 15% auto;
   padding: 1rem;
   width: 60%;
@@ -32,8 +30,8 @@ section {
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   border: 0.3rem solid rgb(255, 123, 0);
   font-size: 0.8rem;
+  z-index: 9;
 }
-
 
 .nav {
   display: flex;
@@ -41,14 +39,27 @@ section {
   align-items: center;
   align-content: center;
   padding-bottom: 3ch;
+  padding-left: 40%;
 }
 
-.nav-h1 {
-  font-size: 30px;
-  font-weight: 600;
-  text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
-    0px 0px 20px #b393d3;
-  margin-bottom: 1ch;
+.waviy {
+  position: relative;
+  
+}
+.waviy span {
+  position: relative;
+  display: inline-block;
+  font-size: 40px;
+  color: #fff;
+  text-transform: uppercase;
+  animation: flip 2s infinite;
+  animation-delay: calc(0.2s * var(--i));
+}
+@keyframes flip {
+  0%,
+  80% {
+    transform: rotateY(360deg);
+  }
 }
 
 .game-container {
@@ -58,9 +69,11 @@ section {
   justify-content: center;
   align-items: center;
   padding-left: 5ch;
+  
 }
 
 .game-grid {
+  
   display: grid;
   grid-template-columns: repeat(7, 90px);
   grid-template-rows: repeat(6, 90px);
@@ -69,7 +82,7 @@ section {
   background: linear-gradient(
     0deg,
     rgba(211, 233, 233, 1) 0%,
-    rgba(18, 214, 175, 1) 100%
+    rgb(106, 112, 111) 100%
   );
   height: 90%;
   place-items: center;
@@ -130,7 +143,16 @@ section {
   border-radius: 50%;
 }
 
+#next-player-name{
+  color: #fdfdfe;
+  font-weight: 600;
+  text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
+    0px 0px 20px #b393d3;
+  padding-top: 1ch;
+}
+
 #footer {
+  color: #fdfdfe;
   position: fixed;
   font-weight: 600;
   text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
@@ -153,7 +175,8 @@ section {
   vertical-align: middle;
   transition: background 0.25s;
 }
-.toggle-switch:before, .toggle-switch:after {
+.toggle-switch:before,
+.toggle-switch:after {
   content: "";
 }
 .toggle-switch:before {
@@ -188,4 +211,71 @@ section {
   margin-left: 5px;
   position: relative;
   top: 2px;
+}
+
+.button {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
 }

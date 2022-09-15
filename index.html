@@ -10,12 +10,21 @@
   <body>
     <header class="header">
       <nav class="nav">
-        <h1 class="nav-h1">Connect 4</h1>
+        <div class="waviy">
+          <span style="--i:1">C</span>
+          <span style="--i:2">o</span>
+          <span style="--i:3">n</span>
+          <span style="--i:4">n</span>
+          <span style="--i:5">e</span>
+          <span style="--i:6">c</span>
+          <span style="--i:7">t</span>
+          <span style="--i:8">4</span>
+         </div>
       </nav>
     </header>
 
-    <section id="mensaje">
-      <div class="mensaje">
+    <section id="message">
+      <div class="message button">
         <h2>Welcome to the Connect 4</h2>
         <p>The default game mode is P1vsP2. If you want to play against a CPU, select your game mode and click on START<br>
          <span>😜</span>
@@ -25,7 +34,7 @@
           <div class="toggle-switch"></div>
           <span class="toggle-label">P1vsCPU</span>
         </label>
-        <button class="play-button" id="play-button"">START</button>
+        <button class="play-button button" id="play-button"">START</button>
       </div>
 
 </section>
@@ -86,7 +95,7 @@
         <div class="controls-container">
           <div class="controls">
             <div class="restart">
-              <button id="restart-button" onclick="resetBoard();">
+              <button id="restart-button" class="button" onclick="resetBoard();">
                 Reset Game
               </button>
             </div>
@@ -97,7 +106,7 @@
             </div>
 
             <div class="quit">
-              <button class="quit" id="quit" onclick="gameAgain();">
+              <button class="quit button" id="quit" onclick="gameAgain();">
                 Quit
               </button>
             </div>
