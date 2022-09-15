@@ -1,3 +1,31 @@
+@media screen and (max-width: 1060px) {
+  #primary {
+    width: 67%;
+  }
+  #secondary {
+    width: 30%;
+    margin-left: 3%;
+  }
+  #main {
+    width: 25%;
+  }
+}
+
+/* Media Queries: Tabled Portrait */
+@media screen and (max-width: 768px) {
+  #primary {
+    width: 100%;
+  }
+  #secondary {
+    width: 100%;
+    margin: 0;
+    border: none;
+  }
+  #main {
+    width: 25%;
+  }
+}
+
 body {
   height: auto;
   width: auto;
@@ -39,12 +67,11 @@ header {
   align-items: center;
   align-content: center;
   padding-bottom: 3ch;
-  padding-left: 40%;
+  padding-left: 42%;
 }
 
 .waviy {
   position: relative;
-  
 }
 .waviy span {
   position: relative;
@@ -69,7 +96,6 @@ header {
   justify-content: center;
   align-items: center;
   padding-left: 5ch;
-  
 }
 
 .game-grid {
@@ -89,7 +115,7 @@ header {
 }
 
 .controls-container {
-  display:none;
+  display: none;
   flex-grow: 1;
   background-color: var(--green);
 
@@ -143,18 +169,24 @@ header {
   border-radius: 50%;
 }
 
-#next-player-name{
+#next-player-name {
   color: #fdfdfe;
   font-weight: 600;
   text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
     0px 0px 20px #b393d3;
   padding-top: 1ch;
 }
-#winner{
-  display:none;
+#winner {
+  display: none;
+  position: absolute;
   text-align: center;
   justify-content: center;
   align-content: center;
+  z-index: 1;
+  width: 20%;
+  height: 20%;
+  padding: 100ch;
+  opacity: 0.9;
 }
 
 #footer {

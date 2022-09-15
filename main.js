@@ -20,10 +20,10 @@ let nextPlayerName = document.getElementById("next-player-name");
 let nextColor = document.getElementById("next-player-color");
 let startScreen = document.getElementById("message");
 let closeStartScreen = document.getElementById("play-button");
-let winnerScreen=document.getElementById("winner")
-let winnerMessage=document.getElementById("winnerMessage")
-let gameGrid = document.getElementById("game-grid")
-let controlsContainer = document.getElementById("controls-container")
+let winnerScreen = document.getElementById("winner");
+let winnerMessage = document.getElementById("winnerMessage");
+let gameGrid = document.getElementById("game-grid");
+let controlsContainer = document.getElementById("controls-container");
 
 let cpu = false;
 let winner;
@@ -42,7 +42,6 @@ let board = [
   Array.from(row6),
 ];
 console.log(board);
-
 
 //Fill the gaps from bottom sequence
 
@@ -821,12 +820,11 @@ const checkVertical = (hole) => {
 };
 
 const setWinner = () => {
-  controlsContainer.style.display = "none"
-  gameGrid.style.display = "none"
-  winnerScreen.style.display = "inline"
-  winnerMessage.innerHTML= "Winner " + winner
+  controlsContainer.style.display = "none";
+  //gameGrid.style.display = "none"
+  winnerScreen.style.display = "inline-block";
+  winnerMessage.innerHTML = "Winner " + winner;
 };
-
 
 //Resets
 const resetBoard = () => {
@@ -845,9 +843,9 @@ const resetBoard = () => {
     Array.from(row6),
   ];
   nextPlayerName.innerHTML = "Player One";
-  winnerScreen.style.display = "none"
-  gameGrid.style.display = "grid"
-  controlsContainer.style.display = "flex"
+  winnerScreen.style.display = "none";
+  gameGrid.style.display = "grid";
+  controlsContainer.style.display = "flex";
   currentPlayer = 1;
   for (let hole of holes) {
     hole.classList.remove("player-one", "player-two", "taken");
@@ -878,7 +876,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 closeStartScreen.onclick = function () {
   startScreen.style.display = "none";
-  gameGrid.style.display = "grid"
-  controlsContainer.style.display = "flex"
+  gameGrid.style.display = "grid";
+  controlsContainer.style.display = "flex";
 };
-
