@@ -28,7 +28,7 @@
 
 @font-face {
   font-family: "Silkscreen" ;
-  src: url("/fonts/slkscr.ttf");
+  src: url("slkscr.ttf");
 } 
   
 * {
