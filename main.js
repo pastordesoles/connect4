@@ -24,6 +24,7 @@ let winnerScreen = document.getElementById("winner");
 let winnerMessage = document.getElementById("winnerMessage");
 let gameGrid = document.getElementById("game-grid");
 let controlsContainer = document.getElementById("controls-container");
+let drawScreen = document.getElementById("draw");
 
 let cpu = false;
 let winner;
@@ -286,21 +287,8 @@ const checkVertical = () => {
 */
 
 const checkDraw = (hole) => {
-  alert("Draw");
-
-  fullHoles = 0;
-  board = [];
-  board = [
-    Array.from(row1),
-    Array.from(row2),
-    Array.from(row3),
-    Array.from(row4),
-    Array.from(row5),
-    Array.from(row6),
-  ];
-  for (let hole of holes) {
-    hole.classList.remove("player-one", "player-two", "taken");
-  }
+  controlsContainer.style.display = "none";
+  drawScreen.style.display = "inline-block";
 };
 
 const checkHorizontal = (hole) => {

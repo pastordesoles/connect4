@@ -201,6 +201,19 @@ header {
   opacity: 0.9;
 }
 
+#draw {
+  display: none;
+  position: absolute;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  z-index: 1;
+  width: 20%;
+  height: 20%;
+  padding: 100ch;
+  opacity: 0.9;
+}
+
 #footer {
   color: #fdfdfe;
   position: fixed;
