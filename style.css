@@ -217,6 +217,10 @@ header {
     0px 0px 20px #b393d3;
 }
 
+.winner {
+  margin-right: 2ch;
+}
+
 .toggle {
   cursor: pointer;
   display: inline-block;
